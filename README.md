@@ -27,16 +27,6 @@
 
 5. **Run the code**. The code will authenticate with the **Spotify and Last.fm APIs** using your credentials, retrieve the list of your liked songs from Spotify, like the same songs on Last.fm, and print the names of the liked songs on the console.
 
-If you want to like only the **last 50 songs** you liked on **Spotify**, you can modify the code as follows:
-
-1. **Replace** the line `results = sp.current_user_saved_tracks(limit=25)` with `results = sp.current_user_saved_tracks(limit=50)`.
-
-2. **Remove** the `reversed()` function from the for loop, since we want the most recent songs.
-
-3. Add a count variable before the for loop and increment it inside the loop. Add a break statement inside the loop to exit the loop when the count reaches 50.
-
-4. **Run the modified code**. The code will now like only the last 50 songs you liked on **Spotify** on **Last.fm** and print their names on the console.
-
 
 
 ## License
