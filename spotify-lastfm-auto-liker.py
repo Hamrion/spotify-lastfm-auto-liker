@@ -19,21 +19,30 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=SPOTIPY_CLIENT_ID,
                                                redirect_uri=SPOTIPY_REDIRECT_URI,
                                                scope="user-library-read"))
 
-# Get the list of liked songs from Spotify
-results = sp.current_user_saved_tracks(limit=50)
+# Authenticate with the Last.fm API
+network = pylast.LastFMNetwork(api_key=API_KEY, api_secret=API_SECRET,
+                               username=username, password_hash=password_hash)
+
+# Get the first batch of 50 saved tracks from Spotify
+offset = 0
+results = sp.current_user_saved_tracks(limit=50, offset=offset)
+
+# Loop through the saved tracks and like each track on Last.fm
 while results['items']:
     for item in results['items']:
         track = item['track']
         artist = track['artists'][0]['name']
         title = track['name']
-        print("I love the song" + ' "' + title + '" ' + "by" + ' ' + artist + '.')
 
-        # Authentication with Last.fm API
-        network = pylast.LastFMNetwork(api_key=API_KEY, api_secret=API_SECRET,
-                                       username=username, password_hash=password_hash)
-
-        # Like songs on Last.fm
+        # Like the track on Last.fm
         network.get_track(artist, title).love()
 
-    # Get the next page of results from Spotify
-    results = sp.current_user_saved_tracks(limit=50, offset=results['offset'] + results['limit'])
+        # Print a message to indicate that the track has been liked
+        print(f"Liked '{title}' by {artist} on Last.fm.")
+
+    # Check if there are more tracks to retrieve
+    if results['next']:
+        offset += 50
+        results = sp.current_user_saved_tracks(limit=50, offset=offset)
+    else:
+        break
