@@ -1,7 +1,7 @@
 # spotify-lastfm-auto-liker
 
 
-**"spotify-lastfm-auto-liker"** code is a Python script that automatically likes the songs you have liked on **Spotify** on your **Last.fm** account using the **Last.fm API**. The script authenticates with both the **Spotify and Last.fm APIs** using your **API** credentials, retrieves the list of your liked songs from **Spotify**, and likes the same songs on **Last.fm** using the pylast library. The script also prints the names of the liked songs on the console for your reference. With this script, you can save time and effort by automatically syncing your liked songs between **Spotify and Last.fm** without having to manually like the same songs on both platforms.
+**"spotify-lastfm-auto-liker"** is a Python script that automatically likes the songs you have liked on **Spotify** on your **Last.fm** account using the **Last.fm API**. The script authenticates with both the **Spotify and Last.fm APIs** using your **API** credentials, retrieves the list of your liked songs from **Spotify**, and likes the same songs on **Last.fm** using the pylast library. The script also prints the names of the liked songs on the console for your reference. With this script, you can save time and effort by automatically syncing your liked songs between **Spotify and Last.fm** without having to manually like the same songs on both platforms.
 
 
 
